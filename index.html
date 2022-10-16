@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0；text-align:center;">
+    <title>出校</title>
+</head>
+<body>
+    <h1 style="font-family:Heiti SC;text-align:center;">出校</h1>
+    <div style="text-align:center">
+    <img src="img/pic.jpeg" alt="">
+    <div style="text-align:center;">马识途-201939060130</div>
+    </div>
+    <div style="border: 0.3px solid rgb(147, 142, 142);">
+    </div>
+    <h1 style="font-weight:Heiti SC;text-align:center;">白名单验证通过，该申请离校扫码1次，离校码只能使用一次，请不要重复打开</h1>
+    <style>
+        #watch{
+            font-size: 35px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+    <div id="nowdiv">
+        <div id="watch"></div>
+ 
+        <script>
+            (function(){
+                // 1. 获取id是watch的div元素
+                var watch = document.getElementById('watch');
+     
+                // 2. 补0函数：如果是个位数的话在前面填个0
+                function addZero(t){
+                    return t < 10 ? '0' + t : t;
+                }
+     
+                 // 3. 毫秒格式化成三位数
+            function format(t){
+                 // 顺便补0了
+                    return t > 999 ? parseInt(t / 10) : t < 10 ? '10' + t : t;
+            }
+     
+                // 4. 首先获取当前日期和时间的函数
+                function getDateTime(){
+                    // 1) 创建date对象
+                    var date = new Date();
+                    // 2) 创建时间time对象，精确到毫秒，并对个位数调用补0函数
+                    var time = {
+                        h : addZero(date.getHours()),
+                        m : addZero(date.getMinutes()),
+                        s : addZero(date.getSeconds()),
+                        hs : format(date.getMilliseconds())
+                    }
+                    // 3) 设置元素中的文本内容
+                    watch.innerHTML = time.h + ':' + time.m + ':' + time.s + ':' + time.hs;
+     
+                }
+                // 5. 调用函数
+                getDateTime();
+                // 6. 定时器动态更新
+                setInterval(getDateTime,1);
+            })();
+        </script>
+    </div>
+    </div>
+    <div style="text-align:center;">
+    <img src="img/yes.jpg" height="155px" width="185px alt="">
+    </div>
+</body>
+</html>
